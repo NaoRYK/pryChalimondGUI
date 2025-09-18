@@ -17,42 +17,102 @@ namespace pryChalimondGUI
         string[] names = new string[3];
         int counter = 0;
         int index = 0;
-        int maxNumber = 3,minNumber= 0;
+        const int minNumber = 0;
         public frmBotonera()
         {
             InitializeComponent();
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        private void updateForm(bool isIncreasing)
         {
-            if(index >= maxNumber  )
+
+
+
+            if (isIncreasing)
             {
-                MessageBox.Show("No se puede realizar esa accion");
+                index++;
 
-                return;
-            }
-            else
-            {
-
-                lblIndex.Text = $"Indice: {index}";
-
-                lblName.Text = names[index];
-                if (index >= maxNumber)
+                if (index >= names.Length - 1)
                 {
-                    index = maxNumber;
+                    btnNext.Enabled = false;
+                    btnLastItem.Enabled = false;
+                    btnPrev.Enabled = true;
+                    index = names.Length - 1;
                 }
                 else
                 {
-                    index++;
+                    btnPrev.Enabled = true;
+                    btnFirstItem.Enabled = true;
+
+
                 }
+                updateLabels();
             }
+            else
+            {
+                index--;
+
+                if (index <= minNumber)
+                {
+                    index = minNumber;
+                    btnPrev.Enabled = false;
+                    btnFirstItem.Enabled = false;
+                }
+                else
+                {
+                    btnNext.Enabled = true;
+                    btnLastItem.Enabled = true;
+                }
+                updateLabels();
+
+
+            }
+
+
+
+        }
+
+        //pasar true para ir al primero, false para el segundo
+        private void jumpTo(bool isFirst)
+        {
+
+            if (isFirst)
+            {
+                index = minNumber;
+                btnPrev.Enabled = false;
+                btnNext.Enabled = true;
+                btnFirstItem.Enabled = false;
+
+                btnLastItem.Enabled = true;
+            }
+            else
+            {
+                index = names.Length - 1;
+                btnNext.Enabled = false;
+                btnPrev.Enabled = true;
+                btnFirstItem.Enabled = true;
+                btnLastItem.Enabled = false;
+            }
+            updateLabels();
+        }
+
+        private void updateLabels()
+        {
+            lblName.Text = names[index];
+            lblIndex.Text = $"Indice: {index}";
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            updateForm(true);
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if(counter > 2)
+            if (counter > 2)
             {
                 MessageBox.Show("No se pueden agregar mas nombres");
+                btnSubmit.Enabled = false;
                 return;
             }
             else
@@ -69,27 +129,24 @@ namespace pryChalimondGUI
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            if (index < minNumber)
-            {
+            updateForm(false);
+        }
 
-                MessageBox.Show("No se puede realizar esa accion");
-                return;
-            }
-            else
-            {
-                if(index <= minNumber)
-                {
-                    index= minNumber;
-                }
-                else
-                {
-                    index--;
-                }
-                lblIndex.Text = $"Indice: {index}";
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmControles controlesForm = new frmControles();
+            controlesForm.Show();
+        }
 
-                lblName.Text = names[index];
+        private void btnFirstItem_Click(object sender, EventArgs e)
+        {
+            jumpTo(true);
+        }
 
-            }
+        private void btnLastItem_Click(object sender, EventArgs e)
+        {
+            jumpTo(false);
         }
     }
 }
