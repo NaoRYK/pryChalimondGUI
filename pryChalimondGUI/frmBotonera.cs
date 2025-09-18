@@ -65,11 +65,7 @@ namespace pryChalimondGUI
                 }
                 updateLabels();
 
-
             }
-
-
-
         }
 
         //pasar true para ir al primero, false para el segundo

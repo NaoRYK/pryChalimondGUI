@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBotonera));
             lblName = new Label();
             btnPrev = new Button();
             btnNext = new Button();
@@ -130,6 +131,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(342, 291);
+            ControlBox = false;
             Controls.Add(btnExit);
             Controls.Add(btnFirstItem);
             Controls.Add(lblIndex);
@@ -139,6 +141,7 @@
             Controls.Add(btnNext);
             Controls.Add(btnPrev);
             Controls.Add(lblName);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmBotonera";
             Text = "Botonera";
             ResumeLayout(false);
