@@ -12,15 +12,16 @@ namespace pryChalimondGUI
 {
     public partial class frmBotonera : Form
     {
-
+        private frmControles controlesForm;
         string name;
-        string[] names = new string[3];
+        public string[] names = new string[3];
         int counter = 0;
         int index = 0;
         const int minNumber = 0;
-        public frmBotonera()
+        public frmBotonera(frmControles form)
         {
             InitializeComponent();
+            controlesForm = form; // guardo referencia al otro formdf para que no se me pierdan los datos cuando vuelva atras
         }
 
         private void updateForm(bool isIncreasing)
@@ -131,7 +132,7 @@ namespace pryChalimondGUI
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmControles controlesForm = new frmControles();
+            controlesForm.RefreshList(names); // recargar lista
             controlesForm.Show();
         }
 
@@ -144,5 +145,7 @@ namespace pryChalimondGUI
         {
             jumpTo(false);
         }
+
+
     }
 }

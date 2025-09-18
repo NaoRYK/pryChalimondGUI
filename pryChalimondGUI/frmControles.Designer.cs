@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             btnBotonera = new Button();
+            lstNames = new ComboBox();
             SuspendLayout();
             // 
             // btnBotonera
             // 
-            btnBotonera.Location = new Point(2, 12);
+            btnBotonera.Location = new Point(155, 33);
             btnBotonera.Name = "btnBotonera";
             btnBotonera.Size = new Size(172, 54);
             btnBotonera.TabIndex = 0;
@@ -41,20 +42,31 @@
             btnBotonera.UseVisualStyleBackColor = true;
             btnBotonera.Click += btnBotonera_Click;
             // 
+            // lstNames
+            // 
+            lstNames.FormattingEnabled = true;
+            lstNames.Location = new Point(55, 93);
+            lstNames.Name = "lstNames";
+            lstNames.Size = new Size(361, 23);
+            lstNames.TabIndex = 1;
+            // 
             // frmControles
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(484, 461);
+            Controls.Add(lstNames);
             Controls.Add(btnBotonera);
             Name = "frmControles";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Control de interfaz grafica";
+            Load += frmControles_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button btnBotonera;
+        private ComboBox lstNames;
     }
 }
