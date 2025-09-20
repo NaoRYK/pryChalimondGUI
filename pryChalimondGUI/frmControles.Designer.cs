@@ -34,9 +34,9 @@
             // 
             // btnBotonera
             // 
-            btnBotonera.Location = new Point(155, 33);
+            btnBotonera.Location = new Point(5, 3);
             btnBotonera.Name = "btnBotonera";
-            btnBotonera.Size = new Size(172, 54);
+            btnBotonera.Size = new Size(467, 84);
             btnBotonera.TabIndex = 0;
             btnBotonera.Text = "Abrir botonera";
             btnBotonera.UseVisualStyleBackColor = true;
